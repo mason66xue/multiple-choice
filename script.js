@@ -9,6 +9,8 @@ var choiceTwo=document.querySelector('#b');
 var choiceThree=document.querySelector('#c');
 var question=document.querySelector('#question');
 var nextButton = document.querySelector(".next");
+
+
 var slides=document.querySelector('.slide');
 
 //global variable 
@@ -66,8 +68,9 @@ function startGame(){
     timerCount=80;
     //prevents start button from being clicked when round is in progress
     startButton.disabled = true;
-    startTimer()
+    // startTimer()
     quizBox ()
+    
 }
 
 // quizBox function to start the quiz 
@@ -76,22 +79,43 @@ function quizBox(){
     choiceOne.textContent= questions[0].a;
     choiceTwo.textContent= questions[0].b;
     choiceThree.textContent= questions[0].c;
+    
+    
+
 }
 
 //next page for multiple choice 
 
-function showSlide(n){
-    slides[currentSlide].classList.remove('active-slide');
-slides[n].classList.add('active-slide');
-currentSlide=n;
-if (currentSlide=== slides.length-1){
-    nextButton.style.display='none';
-   }
+function quizBoxTwo(){
+
+    quiz.textContent= questions[1].question;
+    choiceOne.textContent= questions[1].a;
+    choiceTwo.textContent= questions[1].b;
+    choiceThree.textContent= questions[1].c;
+    nextButton.addEventListener('click',quizBoxThree);
+
+
 
 }
 
-function showNextSlide(){
-    showSlide(currentSlide - 1);
+
+
+function quizBoxThree(){
+    quiz.textContent= questions[2].question;
+    choiceOne.textContent= questions[2].a;
+    choiceTwo.textContent= questions[2].b;
+    choiceThree.textContent= questions[2].c;
+    nextButton.addEventListener('click',quizBoxFour);
+
+}
+
+
+function quizBoxFour(){
+    quiz.textContent= questions[3].question;
+    choiceOne.textContent= questions[3].a;
+    choiceTwo.textContent= questions[3].b;
+    choiceThree.textContent= questions[3].c;
+
 }
 
 
@@ -108,40 +132,40 @@ function showNextSlide(){
 
 
 //the setTimer function starts and stops the time and trigers 'saves my initial and score'
-function startTimer(){
-    //set timer 
-    timer = setInterval(function(){
-        timerCount--;
-        timerElement.textContent = timerCount;
-        // win condition is met
-        if(timerCount>=0){
-            if(isWin && timerCount >0){
-                //clear interval and stop timer 
-                clearInterval(timer);
-              }
-             }
-      //if time runs out 
-      if(timerCount===0){
-        //clear interval 
-        clearInterval(timer);
+// function startTimer(){
+//     //set timer 
+//     timer = setInterval(function(){
+//         timerCount--;
+//         timerElement.textContent = timerCount;
+//         // win condition is met
+//         if(timerCount>=0){
+//             if(isWin && timerCount >0){
+//                 //clear interval and stop timer 
+//                 clearInterval(timer);
+//               }
+//              }
+//       //if time runs out 
+//       if(timerCount===0){
+//         //clear interval 
+//         clearInterval(timer);
     
-      }
-    },1000);
-}
+//       }
+//     },1000);
+// }
 
-//count on wins/score and count to client storage
-function setWins(){
-    win.textContent = winCounter;
-    localStorage.setItem('winCount',winCounter);
-}
+// //count on wins/score and count to client storage
+// function setWins(){
+//     win.textContent = winCounter;
+//     localStorage.setItem('winCount',winCounter);
+// }
 
 
-function setLosses(){
-    //not very sure how to make it deduct from time
-}
+// function setLosses(){
+//     //not very sure how to make it deduct from time
+// }
 
 
 
 //even listener to start the button 
 startButton.addEventListener("click",startGame);
-nextButton.addEventListener('click',showNextSlide);
+nextButton.addEventListener('click',quizBoxTwo);
