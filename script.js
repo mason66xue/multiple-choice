@@ -64,10 +64,9 @@ function init(){
 
 //startGame function is called when click on the start button//
 function startGame(){
-    isWin= false;
-    timerCount=80;
+    
     //prevents start button from being clicked when round is in progress
-    startButton.disabled = true;
+    startButton.style.visibility = 'hidden';
     // startTimer()
     quizBox ()
     
@@ -84,7 +83,7 @@ function quizBox(){
 
 }
 
-//next page for multiple choice 
+//render following pages for multiple choice questions
 
 function quizBoxTwo(){
 
@@ -92,10 +91,8 @@ function quizBoxTwo(){
     choiceOne.textContent= questions[1].a;
     choiceTwo.textContent= questions[1].b;
     choiceThree.textContent= questions[1].c;
+    
     nextButton.addEventListener('click',quizBoxThree);
-
-
-
 }
 
 
