@@ -72,6 +72,8 @@ function startGame(){
     
 }
 
+
+
 // quizBox function to start the quiz 
 function quizBox(){
     quiz.textContent= questions[0].question;
