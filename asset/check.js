@@ -69,6 +69,7 @@ function startGame(){
     
     //prevents start button from being clicked when round is in progress
     startButton.style.visibility = 'hidden';
+    
     isWin=false;
     
     // startTimer()
@@ -87,6 +88,7 @@ function quizBox(){
     choiceOne.textContent= questions[0].a;
     choiceTwo.textContent= questions[0].b;
     choiceThree.textContent= questions[0].c;
+    
 }
 
 
@@ -123,14 +125,21 @@ function quizBoxFour(){
 
 }
 
-// function checkAnswer(){
-//     if (answer.toLowerCase()=== 'correct answer'){
-//         alert('Good Job!');
-//     }else{
-//         alert('WRONG!!');
-//     }
+
+const checkResult=document.querySelector('#result')
+function checkAnswer(event){
+    if (event.target.matches("answer")) {
+        if (event.target.textContent === questions[currentQuestion].answer) {
+          // console.log("Right answer");
+          checkResult.innerHTML = "Correct";
+        //   scoreCount = timeCount;
+        //   scoreDisplay.innerHTML = "Your score: " + scoreCount;
     
-// }
+        }}
+
+        quizBox();
+    }
+    document.addEventListener('click',checkAnswer);
 
 
 
