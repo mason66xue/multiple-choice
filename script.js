@@ -143,7 +143,7 @@ function quizBoxFour(){
 
 
 //the setTimer function starts and stops the time and trigers 'saves my initial and score'
-const startMinutes =0.1;
+const startMinutes =1;
 let time = startMinutes * 60;
 var timerElement = document.querySelector('#timer');
 
