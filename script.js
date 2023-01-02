@@ -2,13 +2,15 @@
 var gameContainer= document.querySelector('.quiz-container');
 var game = document.querySelector('#quiz');
 var startButton = document.querySelector('.start-button');
-var timerElement = document.querySelector('.timer-count');
+// var timerElement = document.querySelector('#timer');
 var slides = document.querySelectorAll(".slide");
 var choiceOne =document.querySelector('#a');
 var choiceTwo=document.querySelector('#b');
 var choiceThree=document.querySelector('#c');
 var question=document.querySelector('#question');
 var nextButton = document.querySelector(".next");
+var correctAnswer= document.querySelector('.answers');
+
 
 
 var slides=document.querySelector('.slide');
@@ -67,8 +69,12 @@ function startGame(){
     
     //prevents start button from being clicked when round is in progress
     startButton.style.visibility = 'hidden';
+    isWin=false;
+    timerCount=80;
     // startTimer()
     quizBox ()
+
+    setInterval(startTimer, 1000);
     
 }
 
@@ -80,9 +86,6 @@ function quizBox(){
     choiceOne.textContent= questions[0].a;
     choiceTwo.textContent= questions[0].b;
     choiceThree.textContent= questions[0].c;
-    
-    
-
 }
 
 //render following pages for multiple choice questions
@@ -117,6 +120,14 @@ function quizBoxFour(){
 
 }
 
+// function checkAnswer(){
+//     if (answer.toLowerCase()=== 'correct answer'){
+//         alert('Good Job!');
+//     }else{
+//         alert('WRONG!!');
+//     }
+    
+// }
 
 
 
@@ -131,26 +142,33 @@ function quizBoxFour(){
 
 
 //the setTimer function starts and stops the time and trigers 'saves my initial and score'
-// function startTimer(){
-//     //set timer 
-//     timer = setInterval(function(){
-//         timerCount--;
-//         timerElement.textContent = timerCount;
-//         // win condition is met
-//         if(timerCount>=0){
-//             if(isWin && timerCount >0){
-//                 //clear interval and stop timer 
-//                 clearInterval(timer);
-//               }
-//              }
-//       //if time runs out 
-//       if(timerCount===0){
-//         //clear interval 
-//         clearInterval(timer);
+const startMinutes =2;
+let time = startMinutes * 60;
+var timerElement = document.querySelector('#timer');
+
+// setInterval(startTimer, 1000);
+function startTimer(){
+const minutes =Math.floor(time/60);
+let seconds = time % 60;
+timerElement.innerHTML = `${minutes}: ${seconds}`;
+time--
     
-//       }
-//     },1000);
-// }
+        // win condition is met
+        if(timerCount>=0){
+            if(isWin && timerCount >0){
+                //clear interval and stop timer 
+                clearInterval(timer);
+              }
+                 }
+      //if time runs out 
+    //   if(timerCount===0){
+    //     //clear interval 
+    //     clearInterval(timer);
+    
+    //   }
+    
+}
+
 
 // //count on wins/score and count to client storage
 // function setWins(){
@@ -168,3 +186,4 @@ function quizBoxFour(){
 //even listener to start the button 
 startButton.addEventListener("click",startGame);
 nextButton.addEventListener('click',quizBoxTwo);
+// document.addEventListener('click',checkAnswer);
