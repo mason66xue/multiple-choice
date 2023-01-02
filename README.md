@@ -3,7 +3,9 @@
 
 ## Description
 
-Welcome to my history quiz! So far there are only 4 questions on this quiz and there are still rooms to grow for more questions. 
+Welcome to my history quiz! So far there are only 4 questions on this quiz and there are still rooms to grow for more questions. The purpose for me to create this quiz is because I want people to get to know more histories around the world. 
+
+Good Luck! 
 
 
 
