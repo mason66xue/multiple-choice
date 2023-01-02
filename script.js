@@ -70,11 +70,12 @@ function startGame(){
     //prevents start button from being clicked when round is in progress
     startButton.style.visibility = 'hidden';
     isWin=false;
-    timerCount=80;
+    
     // startTimer()
-    quizBox ()
+    quizBox ();
+   
 
-    setInterval(startTimer, 1000);
+    timer=setInterval(startTimer, 1000);
     
 }
 
@@ -142,7 +143,7 @@ function quizBoxFour(){
 
 
 //the setTimer function starts and stops the time and trigers 'saves my initial and score'
-const startMinutes =2;
+const startMinutes =0.1;
 let time = startMinutes * 60;
 var timerElement = document.querySelector('#timer');
 
@@ -150,22 +151,31 @@ var timerElement = document.querySelector('#timer');
 function startTimer(){
 const minutes =Math.floor(time/60);
 let seconds = time % 60;
-timerElement.innerHTML = `${minutes}: ${seconds}`;
+timerElement.innerHTML = `${minutes}: ${seconds} mins left`;
 time--
     
         // win condition is met
-        if(timerCount>=0){
-            if(isWin && timerCount >0){
-                //clear interval and stop timer 
-                clearInterval(timer);
-              }
-                 }
+        // if(timerCount>=0){
+        //     if(isWin && timerCount >0){
+        //         //clear interval and stop timer 
+        //         clearInterval(timer);
+        //       }
+                //  }
       //if time runs out 
-    //   if(timerCount===0){
-    //     //clear interval 
-    //     clearInterval(timer);
+      if(time <= -1){
+        
+        //clear interval 
+        stopTimer();
+        timerElement.innerHTML = 'time up!!!!'
+       
+
     
-    //   }
+      }
+    
+}
+
+function stopTimer(){
+    clearInterval(timer);
     
 }
 
