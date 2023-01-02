@@ -82,11 +82,14 @@ timer=setInterval(startTimer, 1000);
 
 // quizBox function to start the quiz 
 function quizBox(){
+   
     quiz.textContent= questions[0].question;
     choiceOne.textContent= questions[0].a;
     choiceTwo.textContent= questions[0].b;
     choiceThree.textContent= questions[0].c;
 }
+
+
 
 //render following pages for multiple choice questions
 
@@ -150,7 +153,7 @@ var timerElement = document.querySelector('#timer');
 function startTimer(){
 const minutes =Math.floor(time/60);
 let seconds = time % 60;
-timerElement.innerHTML = `${minutes}: ${seconds} left`;
+timerElement.innerHTML = `${minutes}: ${seconds} mins left`;
 time--
     
         // win condition is met

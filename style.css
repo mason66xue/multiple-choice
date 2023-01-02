@@ -39,9 +39,10 @@
     border: 2px solid gray;
     cursor: pointer;
     outline: none;
+    display: grid;
+    }
 
 
-}
 
 #a,#b,#c{
     width: 8rem;
